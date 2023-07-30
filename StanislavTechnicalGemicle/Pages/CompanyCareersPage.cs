@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TechnicalTaskGemicle.DescriptionsPages
+namespace TechnicalTaskGemicle.Pages
 {
     public class CompanyCareersPage : BasePage
     {

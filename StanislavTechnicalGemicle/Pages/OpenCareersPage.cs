@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TechnicalTaskGemicle.DescriptionsPages
+namespace TechnicalTaskGemicle.Pages
 {
     public class OpenCareersPage : BasePage
     {
@@ -28,9 +28,9 @@ namespace TechnicalTaskGemicle.DescriptionsPages
             ukrfilterOfficesButton.Click();
             return new OpenCareersPage(driver);
         }
-        public bool AvailabilitOpenCareersQAEngineer()
+        public bool IsVacancyExists(string vacancyName)
         {
-            return AvailabilitOfElementsOnThePage("//div[contains(@class, 'job-card__title')]/*[contains(text(), 'QA Automation Engineer')]");
+            return AvailabilitOfElementsOnThePage($"//div[contains(@class, 'job-card__title')]/*[contains(text(), '{vacancyName}')]");
         }
     }
 }

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TechnicalTaskGemicle.DescriptionsPages
+namespace TechnicalTaskGemicle.Pages
 {
     public class BasePage
     {
-        private readonly TimeSpan DefaultTimeToWait = TimeSpan.FromSeconds(30);
+        private readonly TimeSpan _defaultTimeToWait = TimeSpan.FromSeconds(30);
         protected IWebDriver driver;
 
         public BasePage(IWebDriver webDriver)
@@ -32,7 +32,7 @@ namespace TechnicalTaskGemicle.DescriptionsPages
         }
         public IWebElement? WaitForElementToBeVisible(string xpath, TimeSpan timeToWait = default)
         {
-            var wait = new WebDriverWait(driver, timeToWait == default ? DefaultTimeToWait : timeToWait);
+            var wait = new WebDriverWait(driver, timeToWait == default ? _defaultTimeToWait : timeToWait);
             try
             {
                 return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xpath)));
@@ -44,7 +44,7 @@ namespace TechnicalTaskGemicle.DescriptionsPages
         }
         public IWebElement? WaitForElementToBeClickable(IWebElement element, TimeSpan timeToWait = default)
         {
-            var wait = new WebDriverWait(driver, timeToWait == default ? DefaultTimeToWait : timeToWait);
+            var wait = new WebDriverWait(driver, timeToWait == default ? _defaultTimeToWait : timeToWait);
             try
             {
                 ScrollDownToElement(element);
@@ -63,13 +63,5 @@ namespace TechnicalTaskGemicle.DescriptionsPages
             else
                 return false;
         }
-        /*public CompanyCareersPage CloseCookieBanner(TimeSpan timeToWait = default)
-        {
-            var firstCookieButton = WaitForElementToBeVisible("//*[contains(@class, 'VizExIconButton__AbstractVizExIconButton-qk6r6n-0 NHqLc InitialMessageBubble__CloseButton-sc-1fgrqtg-1 iuNYfh')]", timeToWait);
-            firstCookieButton.Click();
-            var closeButton = WaitForElementToBeVisible("//a[contains(@class,'cookiebanner__close d-block')]", timeToWait);
-            closeButton.Click();
-            return new CompanyCareersPage(driver);
-        }*/
     }
 }

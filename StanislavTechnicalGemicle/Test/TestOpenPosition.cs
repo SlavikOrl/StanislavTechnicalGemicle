@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TechnicalTaskGemicle.DescriptionsPages;
+using TechnicalTaskGemicle.Pages;
 
 namespace TechnicalTaskGemicle.Test
 {
@@ -20,7 +20,8 @@ namespace TechnicalTaskGemicle.Test
             var filterOfficeSection = openCarrersPage.ClickfilterOfficesButton();
             var ukrOfficePosition = filterOfficeSection.ClickUkrfilterOfficesButton();
 
-            ukrOfficePosition.AvailabilitOpenCareersQAEngineer();
+            var result = ukrOfficePosition.IsVacancyExists("QA Automation Engineer");
+            Assert.AreEqual(true, result);
         }
     }
 }
